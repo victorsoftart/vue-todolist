@@ -8,7 +8,7 @@ import { todoStore } from './todo'
 Vue.use(Vuex)
 Vue.use(VueAxios, axios)
 
-Vue.axios.defaults.baseURL = "https://jsonplaceholder.typicode.com/";
+Vue.axios.defaults.baseURL = "http://192.168.0.42:3000/";
 
 export default new Vuex.Store({
     modules: {

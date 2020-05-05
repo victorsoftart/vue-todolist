@@ -29,7 +29,7 @@
           <input type="text" v-model="todo.project" >
         </div>
         <div class="ui two button attached buttons">
-          <button class="ui basic blue button" v-on:click="hideForm">
+          <button class="ui basic blue button" v-on:click="hideForm(todo)">
             Close X
           </button>
         </div>
@@ -56,8 +56,9 @@ export default {
     showForm() {
       this.isEditing = true;
     },
-    hideForm() {
+    hideForm(todo) {
       this.isEditing = false;
+      this.$store.dispatch('updateTodo', todo);
     },
     deleteTodo(todo) {
       this.$store.dispatch('deleteTodo', todo);

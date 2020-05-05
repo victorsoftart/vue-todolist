@@ -1,0 +1,66 @@
+{
+  "name": "vue-todolist-example",
+  "version": "0.2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/victorsoftart/vue-todolist.git"
+  },
+  "keywords": [
+    "vue",
+    "vue2",
+    "todolist",
+    "example"
+  ],
+  "author": "Victor <victor.softart@gmail.com> ( https://github.com/victorsoftart )",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/victorsoftart/vue-todolist/issues"
+  },
+  "homepage": "https://github.com/victorsoftart/vue-todolist#readme",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint src/**/*.vue"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "vue": "^2.6.11",
+    "vue-axios": "^2.1.5",
+    "vuex": "^3.3.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-eslint": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

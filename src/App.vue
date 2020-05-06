@@ -1,6 +1,8 @@
 <template>
   <div>
-    <CreateTodo v-bind:todos="todos" />
+    isloading: {{loading}}
+    <div v-show="loading">loading...</div>
+    <CreateTodo v-bind:alltodos="todos" />
     <todo-list></todo-list>
     <!-- <CreateTodo v-on:add-todo="addTodo" /> -->
   </div>
@@ -18,10 +20,11 @@ export default {
   },
   data() {
     return {
+      
     };
   },
   mounted(){
-    console.log('component mounted')
+    console.log('component mounted>>>')
     this.getTodos();
   },
   methods:{
@@ -32,6 +35,10 @@ export default {
   computed: {
     todos() {
       return this.$store.getters.todos
+    },
+    loading() {
+      console.log("computed loading>>>", this.$store.getters.loading)
+      return this.$store.getters.loading
     }
   }
 };

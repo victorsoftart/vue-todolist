@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="list-info">
-      <p>Completed Tasks: {{ todos.filter(todo => { return todo.done === true }).length }}</p>
-      <p>Pending Tasks: {{ todos.filter(todo => { return todo.done === false }).length }}</p>
+      <p>Completed Tasks: {{ alltodos.filter(todo => { return todo.done === true }).length }}</p>
+      <p>Pending Tasks: {{ alltodos.filter(todo => { return todo.done === false }).length }}</p>
     </div>
   
   <div class="ui basic content center aligned segment">
@@ -37,7 +37,7 @@
 
 <script>
 export default {
-  props: ["todos"],
+  props: ["alltodos"],
   data() {
     return {
       titleText: "",

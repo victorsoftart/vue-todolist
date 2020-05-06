@@ -6,7 +6,7 @@ Vue.use(VueAxios, axios)
 
 export const todoStore = {
   state: {
-    loading: true,
+    loading: false,
     todos: [
       {
         title: "Todo A",
@@ -36,7 +36,10 @@ export const todoStore = {
       state.loading = true
       Vue.axios.get('todos').then(result => {
         console.log(result)
-        state.loading = false
+        setTimeout(function(){
+          console.log("after GET_TODOS api call getters.loading>>>")
+          state.loading = false
+        }, 1000)
         let res = result.data
         if(res.success == true)
           state.todos =  res.data
@@ -48,7 +51,7 @@ export const todoStore = {
       state.todos.push(todo)
     },
     UPDATE_TODO(state, todo){
-      console.log(state.todos)
+      //console.log(state.todos)
       console.log(todo)
     },
     DELETE_TODO(state, todo){
@@ -64,7 +67,7 @@ export const todoStore = {
     getTodos({commit}) {
       commit('GET_TODOS')
     },
-    addTodo({commit}, todo){console.log(todo)
+    addTodo({commit}, todo){
       this.state.loading = true
       Vue.axios.post('todos/add', todo).then(result => {
         console.log(result)
@@ -77,18 +80,26 @@ export const todoStore = {
       });
     },
     updateTodo({commit}, todo){
-      console.log(todo)
+      //console.log('todo>>>', todo)
       const updated_todo = {
         id: todo._id,
         title: todo.title,
         project: todo.project,
         done: todo.done
       }
-      console.log(updated_todo)
-      this.state.loading = true
+      //console.log('updated_todo>>>', updated_todo)
+      console.log(this.state.todoModule)
+      this.state.todoModule.loading = true
+      console.log(todoStore)
+      //todoStore.state.loading = true
+      console.log("before updateTodo api call getters.loading>>>", this.getters.loading)
       Vue.axios.post('todos/update', updated_todo).then(result => {
         console.log(result)
-        this.state.loading = false
+        var that = this;
+        setTimeout(function(){
+          todoStore.state.loading = false
+          console.log("after updateTodo api call getters.loading>>>", that.getters.loading)
+        }, 1000)
         let res = result.data
         if(res.success == true)
           commit('UPDATE_TODO', todo)
@@ -124,7 +135,10 @@ export const todoStore = {
   },
   getters: {
     todos: state => state.todos,
-    loading: state => {console.log('getters loading');return state.loading},
+    loading: state => {
+      console.log('call getters loading>>>', state.loading)
+      return state.loading
+    },
   }
 
 }
